@@ -633,7 +633,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(8),
         y: utils.withGrid(8),
-        src: "/images/characters/people/npc2.png",
+        src: "images/characters/people/npc2.png",
         behaviorLoop: [
           { type: "stand", direction: "up", time: 400, },
           { type: "stand", direction: "left", time: 800, },
@@ -771,7 +771,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(9),
         y: utils.withGrid(6),
-        src: "/images/characters/people/npc1.png",
+        src: "images/characters/people/npc1.png",
         behaviorLoop: [
           { type: "walk", direction: "left", },
           { type: "walk", direction: "down", },
