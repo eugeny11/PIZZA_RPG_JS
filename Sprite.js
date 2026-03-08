@@ -14,7 +14,7 @@ class Sprite{
        
         this.useShadow = true;
         if (this.useShadow){
-           this.shadow.src = '/images/characters/shadow.png';
+           this.shadow.src = 'images/characters/shadow.png';
         }
         this.shadow.onload = () => {
             this.isShadowLoaded = true;
