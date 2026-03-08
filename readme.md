@@ -14,7 +14,7 @@ This project demonstrates the core architecture of a simple RPG engine including
 
 The goal of this project was to explore **game engine architecture in JavaScript**, focusing on object-oriented design, event systems, and real-time game loops.
 
-![Gameplay Screenshot](images/img_1.png)
+![Gameplay Screenshot](../images/img_1.png)
 
 ---
 
