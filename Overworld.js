@@ -95,21 +95,48 @@ class Overworld {
         })
     }
 
-    initMobileControls() {
+  initMobileControls() {
 
   let touchTimer = null;
 
   document.addEventListener("touchstart", (e) => {
 
     const touch = e.touches[0];
-
     const rect = this.canvas.getBoundingClientRect();
 
     const x = touch.clientX - rect.left;
     const y = touch.clientY - rect.top;
 
-    const centerX = this.canvas.width / 2;
-    const centerY = this.canvas.height / 2;
+    const hero = this.map.gameObjects.hero;
+
+    // перевод координат экрана в координаты мира
+    const worldX = hero.x + (x - rect.width / 2);
+    const worldY = hero.y + (y - rect.height / 2);
+
+    // ищем объект на клетке
+    const tappedObject = Object.values(this.map.gameObjects).find(obj => {
+      return (
+        obj !== hero &&
+        Math.abs(obj.x - worldX) < 16 &&
+        Math.abs(obj.y - worldY) < 16
+      );
+    });
+
+    // если кликнули по NPC / объекту
+    if (tappedObject) {
+
+      if (tappedObject.x > hero.x) hero.direction = "right";
+      else if (tappedObject.x < hero.x) hero.direction = "left";
+      else if (tappedObject.y > hero.y) hero.direction = "down";
+      else if (tappedObject.y < hero.y) hero.direction = "up";
+
+      this.map.checkForActionCutscene();
+      return;
+    }
+
+    // иначе — движение
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
     let direction = null;
 
@@ -119,9 +146,9 @@ class Overworld {
       direction = y > centerY ? "down" : "up";
     }
 
-    this.directionInput.direction = direction;
+    this.directionInput.heldDirections = direction ? [direction] : [];
 
-    // long tap = action
+    // long tap — действие
     touchTimer = setTimeout(() => {
       this.map.checkForActionCutscene();
     }, 400);
@@ -130,7 +157,7 @@ class Overworld {
 
   document.addEventListener("touchend", () => {
 
-    this.directionInput.direction = null;
+    this.directionInput.heldDirections = [];
 
     if (touchTimer) {
       clearTimeout(touchTimer);
