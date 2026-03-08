@@ -14,7 +14,7 @@ This project demonstrates the core architecture of a simple RPG engine including
 
 The goal of this project was to explore **game engine architecture in JavaScript**, focusing on object-oriented design, event systems, and real-time game loops.
 
-![Gameplay Screenshot]([https://github.com/eugeny11/PIZZA_RPG_JS/tree/main/images/img_1.png](https://github.com/eugeny11/PIZZA_RPG_JS/blob/main/images/img_1.jpg)])
+![Gameplay Screenshot](https://github.com/eugeny11/PIZZA_RPG_JS/blob/main/images/img_1.jpg)
 
 ---
 
