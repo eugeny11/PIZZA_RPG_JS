@@ -95,7 +95,50 @@ class Overworld {
         })
     }
 
-  
+    initMobileControls() {
+
+  let touchTimer = null;
+
+  document.addEventListener("touchstart", (e) => {
+
+    const touch = e.touches[0];
+
+    const rect = this.canvas.getBoundingClientRect();
+
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+
+    const centerX = this.canvas.width / 2;
+    const centerY = this.canvas.height / 2;
+
+    let direction = null;
+
+    if (Math.abs(x - centerX) > Math.abs(y - centerY)) {
+      direction = x > centerX ? "right" : "left";
+    } else {
+      direction = y > centerY ? "down" : "up";
+    }
+
+    this.directionInput.direction = direction;
+
+    // long tap = action
+    touchTimer = setTimeout(() => {
+      this.map.checkForActionCutscene();
+    }, 400);
+
+  });
+
+  document.addEventListener("touchend", () => {
+
+    this.directionInput.direction = null;
+
+    if (touchTimer) {
+      clearTimeout(touchTimer);
+    }
+
+  });
+
+}
 
     startMap(mapConfig, heroInitialState=null){
         
@@ -162,6 +205,8 @@ class Overworld {
 
         this.directionInput = new DirectionInput();
         this.directionInput.init();
+
+         this.initMobileControls();
 
         //Kick off the game!
         this.startGameLoop();
