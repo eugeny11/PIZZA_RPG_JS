@@ -24,7 +24,7 @@ The goal of this project was to explore **game engine architecture in JavaScript
 
 The player can move freely across tile-based maps and interact with the environment.
 
-![Overworld](./images/img_2.png)
+![Overworld](https://github.com/eugeny11/PIZZA_RPG_JS/blob/main/images/img_2.png)
 
 Key features:
 
@@ -40,7 +40,7 @@ Key features:
 
 NPCs can trigger dialogue sequences and story events.
 
-![Dialogue](./images/img_3.png)
+![Dialogue](https://github.com/eugeny11/PIZZA_RPG_JS/blob/main/images/img_3.png)
 
 The dialogue system supports:
 
@@ -49,7 +49,7 @@ The dialogue system supports:
 * conditional events
 * story flags
 
-![Gameplay Screenshot](./images/img_2.png)
+![Gameplay Screenshot](https://github.com/eugeny11/PIZZA_RPG_JS/blob/main/images/img_2.png)
 
 ---
 
@@ -57,7 +57,7 @@ The dialogue system supports:
 
 The game includes a simple turn-based combat system.
 
-![Battle](./images/img_4.png)
+![Battle](https://github.com/eugeny11/PIZZA_RPG_JS/blob/main/images/img_4.png)
 
 Battle features:
 
@@ -72,7 +72,7 @@ Battle features:
 
 Players can move between different locations seamlessly.
 
-![Map Transition](./images/img_5.png)
+![Map Transition](https://github.com/eugeny11/PIZZA_RPG_JS/blob/main/images/img_5.png)
 
 The map system supports:
 
@@ -81,7 +81,7 @@ The map system supports:
 * cutscene triggers
 * layered rendering
 
-![Gameplay Screenshot](./images/img_6.png)
+![Gameplay Screenshot](https://github.com/eugeny11/PIZZA_RPG_JS/blob/main/images/img_6.png)
 
 ---
 
