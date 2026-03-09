@@ -242,6 +242,8 @@ Possible extensions:
 
 Created by **Eugeny Iakovlev**
 
+Important: the current demo is primarily optimized for desktop viewing. Mobile and tablet support is still in progress and will require additional refinement. For the best experience, please open the demo on a desktop or laptop browser.
+
 Portfolio
 [https://nemeton-webportals.co.rs/portfolio/](https://nemeton-webportals.co.rs/portfolio/)
 
