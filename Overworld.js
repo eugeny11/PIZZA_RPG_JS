@@ -96,75 +96,105 @@ class Overworld {
     }
 
   initMobileControls() {
-
   let touchTimer = null;
 
   document.addEventListener("touchstart", (e) => {
-
     const touch = e.touches[0];
     const rect = this.canvas.getBoundingClientRect();
 
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
+    const scaleX = this.canvas.width / rect.width;
+    const scaleY = this.canvas.height / rect.height;
+
+    const x = (touch.clientX - rect.left) * scaleX;
+    const y = (touch.clientY - rect.top) * scaleY;
 
     const hero = this.map.gameObjects.hero;
 
-    // перевод координат экрана в координаты мира
-    const worldX = hero.x + (x - rect.width / 2);
-    const worldY = hero.y + (y - rect.height / 2);
+    // ВАЖНО: используем те же координаты камеры,
+    // что и при отрисовке карты / спрайтов
+    const cameraX = utils.withGrid(10.5);
+    const cameraY = utils.withGrid(6);
 
-    // ищем объект на клетке
+    // перевод координат экрана в координаты мира
+    const worldX = hero.x + (x - cameraX);
+    const worldY = hero.y + (y - cameraY);
+
+    // ищем объект по хитбоксу
     const tappedObject = Object.values(this.map.gameObjects).find(obj => {
+      if (obj === hero) return false;
+
+      const hitboxWidth = 20;
+      const hitboxHeight = 24;
+
       return (
-        obj !== hero &&
-        Math.abs(obj.x - worldX) < 16 &&
-        Math.abs(obj.y - worldY) < 16
+        worldX >= obj.x - hitboxWidth / 2 &&
+        worldX <= obj.x + hitboxWidth / 2 &&
+        worldY >= obj.y - hitboxHeight &&
+        worldY <= obj.y + 8
       );
     });
 
-    // если кликнули по NPC / объекту
+    // если нажали на NPC / объект
     if (tappedObject) {
+      const dx = tappedObject.x - hero.x;
+      const dy = tappedObject.y - hero.y;
 
-      if (tappedObject.x > hero.x) hero.direction = "right";
-      else if (tappedObject.x < hero.x) hero.direction = "left";
-      else if (tappedObject.y > hero.y) hero.direction = "down";
-      else if (tappedObject.y < hero.y) hero.direction = "up";
+      if (Math.abs(dx) > Math.abs(dy)) {
+        hero.direction = dx > 0 ? "right" : "left";
+      } else {
+        hero.direction = dy > 0 ? "down" : "up";
+      }
 
       this.map.checkForActionCutscene();
       return;
     }
 
-    // иначе — движение
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+    // движение относительно реального экранного положения героя,
+    // а не центра canvas
+    const heroScreenX = cameraX;
+    const heroScreenY = cameraY;
+
+    const dx = x - heroScreenX;
+    const dy = y - heroScreenY;
 
     let direction = null;
 
-    if (Math.abs(x - centerX) > Math.abs(y - centerY)) {
-      direction = x > centerX ? "right" : "left";
+    if (Math.abs(dx) > Math.abs(dy)) {
+      direction = dx > 0 ? "right" : "left";
     } else {
-      direction = y > centerY ? "down" : "up";
+      direction = dy > 0 ? "down" : "up";
     }
 
     this.directionInput.heldDirections = direction ? [direction] : [];
 
-    // long tap — действие
     touchTimer = setTimeout(() => {
       this.map.checkForActionCutscene();
     }, 400);
-
   });
 
   document.addEventListener("touchend", () => {
-
     this.directionInput.heldDirections = [];
 
     if (touchTimer) {
       clearTimeout(touchTimer);
+      touchTimer = null;
     }
-
   });
+}
 
+resizeGame() {
+  const baseWidth = 352;
+  const baseHeight = 198;
+
+  const availableWidth = window.innerWidth - 24;
+  const availableHeight = window.innerHeight - 24;
+
+  const scaleX = availableWidth / baseWidth;
+  const scaleY = availableHeight / baseHeight;
+
+  const scale = Math.min(scaleX, scaleY);
+
+  document.documentElement.style.setProperty("--game-scale", scale);
 }
 
     startMap(mapConfig, heroInitialState=null){
@@ -232,6 +262,9 @@ class Overworld {
 
         this.directionInput = new DirectionInput();
         this.directionInput.init();
+
+        this.resizeGame();
+        window.addEventListener("resize", () => this.resizeGame());
 
          this.initMobileControls();
 
