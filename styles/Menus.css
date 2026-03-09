@@ -25,3 +25,50 @@
   text-align:center;
   border-bottom: 1px solid #A48465;
 }
+
+@media (max-width: 900px), (max-height: 700px) {
+  .overlayMenu {
+    left: 3em;
+    right: 3em;
+    top: 0.5em;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+  }
+
+  .overlayMenu h2 {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 600px), (max-height: 500px) {
+  .overlayMenu {
+    left: 1.8em;
+    right: 1.8em;
+    top: 0.35em;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+  }
+
+  .overlayMenu h2 {
+    font-size: 8px;
+    padding: 1px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .overlayMenu {
+    left: 1em;
+    right: 1em;
+    top: 0.2em;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+  }
+
+  .overlayMenu h2 {
+    font-size: 7px;
+    padding: 1px 0;
+  }
+}

@@ -37,3 +37,59 @@
     right: 2px;
     bottom: 0;
 }
+
+@media (max-width: 900px), (max-height: 700px) {
+  .TextMessage {
+    height: 30px;
+    padding: 3px;
+  }
+
+  .TextMessage_p {
+    font-size: 10px;
+    line-height: 1.1;
+  }
+
+  .TextMessage_button {
+    font-size: 8px;
+    padding: 6px;
+    right: 1px;
+  }
+}
+
+@media (max-width: 600px), (max-height: 500px) {
+  .TextMessage {
+    height: 26px;
+    padding: 2px;
+  }
+
+  .TextMessage_p {
+    font-size: 9px;
+    line-height: 1.05;
+  }
+
+  .TextMessage_button {
+    font-size: 7px;
+    padding: 4px;
+    right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .TextMessage {
+    height: 22px;
+    padding: 1px 2px;
+  }
+
+  .TextMessage_p {
+    font-size: 8px;
+    line-height: 1;
+    padding-right: 18px;
+  }
+
+  .TextMessage_button {
+    font-size: 6px;
+    padding: 2px 3px;
+    right: 0;
+    bottom: 0;
+  }
+}

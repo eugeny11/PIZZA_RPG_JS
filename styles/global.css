@@ -32,6 +32,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .game-container {
@@ -49,4 +50,16 @@ body {
   image-rendering: pixelated;
   touch-action: none;
   user-select: none;
+}
+
+.how-to-play {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  padding: 0 12px;
+  z-index: 20;
 }

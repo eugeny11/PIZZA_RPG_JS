@@ -94,3 +94,58 @@
   top: 56px;
   animation: battle-glob-left 1s forwards;
 }
+
+@media (max-width: 900px), (max-height: 700px) {
+  .Battle_hero,
+  .Battle_enemy {
+    transform: scale(1.7);
+  }
+
+  .Battle_hero {
+    bottom: 48px;
+    left: 6px;
+  }
+
+  .Battle_enemy {
+    top: 36px;
+    right: 6px;
+  }
+}
+
+@media (max-width: 600px), (max-height: 500px) {
+  .Battle_hero,
+  .Battle_enemy {
+    transform: scale(1.45);
+  }
+
+  .Battle_hero {
+    bottom: 43px;
+    left: 8px;
+  }
+
+  .Battle_enemy {
+    top: 33px;
+    right: 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .Battle_hero,
+  .Battle_enemy {
+    transform: scale(1.1);
+  }
+
+  .Battle_hero {
+    bottom: 39px;
+    left: 10px;
+  }
+
+  .Battle .KeyboardMenu {
+    width: 82px;
+  }
+
+  .Battle_enemy {
+    top: 31px;
+    right: 10px;
+  }
+}

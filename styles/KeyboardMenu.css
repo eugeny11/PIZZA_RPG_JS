@@ -64,3 +64,81 @@
   bottom:0;
   width: 140px;
 }
+
+@media (max-width: 900px), (max-height: 700px) {
+  .KeyboardMenu button {
+    height: 18px;
+    font-size: 9px;
+    padding-left: 8px;
+  }
+
+  .KeyboardMenu .option .right {
+    font-size: 9px;
+    padding-right: 2px;
+  }
+
+  .DescriptionBox {
+    padding: 2px;
+  }
+
+  .DescriptionBox p {
+    font-size: 9px;
+    line-height: 1.1;
+  }
+
+  .Battle .KeyboardMenu {
+    width: 118px;
+  }
+}
+
+@media (max-width: 600px), (max-height: 500px) {
+  .KeyboardMenu button {
+    height: 16px;
+    font-size: 8px;
+    padding-left: 6px;
+  }
+
+  .KeyboardMenu .option .right {
+    font-size: 8px;
+    padding-right: 2px;
+  }
+
+  .DescriptionBox {
+    padding: 1px 2px;
+  }
+
+  .DescriptionBox p {
+    font-size: 8px;
+    line-height: 1.05;
+  }
+
+  .Battle .KeyboardMenu {
+    width: 104px;
+  }
+}
+
+@media (max-width: 420px) {
+  .KeyboardMenu button {
+    height: 14px;
+    font-size: 7px;
+    padding-left: 4px;
+  }
+
+  .KeyboardMenu .option .right {
+    font-size: 7px;
+    padding-right: 1px;
+  }
+
+  .DescriptionBox {
+    padding: 1px;
+  }
+
+  .DescriptionBox p {
+    font-size: 7px;
+    line-height: 1;
+  }
+
+  .Battle .KeyboardMenu {
+    width: 90px;
+  }
+}
